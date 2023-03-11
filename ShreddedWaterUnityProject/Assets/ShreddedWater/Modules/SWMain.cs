@@ -1,6 +1,6 @@
 using BepInEx;
 using Moonstorm;
-// using Moonstorm.Starstorm2;
+using Moonstorm.Starstorm2;
 using R2API;
 using R2API.ScriptableObjects;
 using R2API.Utils;
@@ -59,14 +59,14 @@ namespace ShreddedWater
 		{
 			Instance = this;
 			PluginInfo = Info;
-// 			SS2Log.logger = Logger;
-// #if DEBUG
-// 			gameObject.AddComponent<SWDebugUtil>();
-// #endif
-// 			new SWAssetsLoader().Init();
-// 			new SWConfigLoader().Init();
-// 			new SWContentLoader().Init();
-// 			new SWLanguage().Init();
+			SS2Log.logger = Logger;
+#if DEBUG
+			gameObject.AddComponent<SWDebugUtil>();
+#endif
+			new SWAssetsLoader().Init();
+			new SWConfigLoader().Init();
+			new SWContentLoader().Init();
+			new SWLanguage().Init();
 			ConfigurableFieldManager.AddMod(this);
 
 			//N: i have no idea if SystemInitializer would be too late for this, so it stays here for now.
