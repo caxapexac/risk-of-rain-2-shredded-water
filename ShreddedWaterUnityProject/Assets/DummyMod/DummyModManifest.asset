@@ -145,9 +145,11 @@ MonoBehaviour:
   rootFolderName: DummyLang
   languageFolders:
   - languageName: en
-    languageFiles: []
+    languageFiles:
+    - {fileID: 4900000, guid: 4145fd65a6e27994582df8c041ac4531, type: 3}
   - languageName: RU
-    languageFiles: []
+    languageFiles:
+    - {fileID: 4900000, guid: e3ed4ae6c391761419f21905de46e681, type: 3}
 --- !u!114 &8108561333505546157
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,16 +1,15 @@
-﻿using Moonstorm.Loaders;
-using R2API.ScriptableObjects;
+﻿using R2API.ScriptableObjects;
 using RoR2;
-using RoR2.ContentManagement;
 using System;
 using System.Linq;
+using BepInEx;
 using Moonstorm.Starstorm2;
 using UnityEngine;
 
 
 namespace ShreddedWater
 {
-    public class SWContentLoader : ContentLoader<SWContentLoader>
+    public class SWContentLoader : CommonContentLoader<SWContentLoader>
     {
         public static class Artifacts
         {
@@ -141,9 +140,11 @@ namespace ShreddedWater
         }
 
 
-        public override string identifier => SWMain.Guid;
+        public override string identifier => SWPlugin.Instance.Info.Metadata.GUID;
 
-        public override R2APISerializableContentPack SerializableContentPack { get; protected set; } = SWAssetsLoader.LoadAsset<R2APISerializableContentPack>("ContentPack", SWBundleEnum.Main);
+        public override R2APISerializableContentPack SerializableContentPack { get; protected set; } =
+            SWAssetsLoader.Instance.LoadAsset<R2APISerializableContentPack>("ContentPack", SWBundleEnum.Main);
+
         public override Action[] LoadDispatchers { get; protected set; }
 
         public override Action[] PopulateFieldsDispatchers { get; protected set; }
@@ -154,64 +155,27 @@ namespace ShreddedWater
 
             LoadDispatchers = new Action[]
             {
-                // delegate
-                // {
-                //     new Modules.Scenes().Initialize();
-                // },
-                // delegate
-                // {
-                //     new Modules.ItemTiers().Initialize();
-                // },
-                // delegate
-                // {
-                //     new Modules.Items().Initialize();
-                // },
-                // delegate
-                // {
-                //     new Modules.Equipments().Initialize();
-                // },
-                // delegate
-                // {
-                //     new Modules.Buffs().Initialize();
-                // },
-                // delegate
-                // {
-                //     new Modules.DamageTypes().Initialize();
-                // },
-                // delegate
-                // {
-                //     new Modules.Projectiles().Initialize();
-                // },
-                // delegate
-                // {
-                //     new Modules.Elites().Initialize();
-                // },
-                delegate { DifficultySucc.Init(); },
-
-                // delegate
-                // {
-                //     if(SWConfig.EnableEvents.Value)
-                //     {
-                //         Events.Init();
-                //     }
-                // },
-                // delegate
-                // {
-                //     new Modules.Characters().Initialize();
-                // },
-                // delegate
-                // {
-                //     new Modules.Artifacts().Initialize();
-                // },
-                // delegate
-                // {
-                //     new Modules.Interactables().Initialize();
-                // },
-                // delegate
-                // {
-                //     new Modules.Unlockables().Initialize();
-                // },
-                delegate
+                // () => new Modules.Scenes().Initialize(),
+                // () => new Modules.ItemTiers().Initialize(),
+                // () => new Modules.Items().Initialize(),
+                // () => new Modules.Equipments().Initialize(),
+                // () => new Modules.Buffs().Initialize(),
+                // () => new Modules.DamageTypes().Initialize(),
+                // () => new Modules.Projectiles().Initialize(),
+                // () => new Modules.Elites().Initialize(),
+                () => DifficultySucc.Init(),
+                () =>
+                {
+                    // if (SWConfig.EnableEvents.Value)
+                    // {
+                    //     Events.Init();
+                    // }
+                },
+                // () => new Modules.Characters().Initialize(),
+                // () => new Modules.Artifacts().Initialize(),
+                // () => new Modules.Interactables().Initialize(),
+                // () => new Modules.Unlockables().Initialize(),
+                () =>
                 {
                     SS2Log.Info($"Populating entity state array");
                     GetType()
@@ -220,19 +184,19 @@ namespace ShreddedWater
                         .ToList()
                         .ForEach(state => HG.ArrayUtils.ArrayAppend(ref SerializableContentPack.entityStateTypes, new EntityStates.SerializableEntityStateType(state)));
                 },
-                delegate
+                () =>
                 {
                     SS2Log.Info($"Populating EntityStateConfigurations");
-                    SerializableContentPack.entityStateConfigurations = SWAssetsLoader.LoadAllAssetsOfType<EntityStateConfiguration>(SWBundleEnum.All);
+                    SerializableContentPack.entityStateConfigurations = SWAssetsLoader.Instance.LoadAllAssetsByTypeFromAnyBundle<EntityStateConfiguration>();
                 },
-                delegate
+                () =>
                 {
                     SS2Log.Info($"Populating effect prefabs");
-                    SerializableContentPack.effectPrefabs = SerializableContentPack.effectPrefabs.Concat(SWAssetsLoader.LoadAllAssetsOfType<GameObject>(SWBundleEnum.All)
-                            .Where(go => go.GetComponent<EffectComponent>()))
+                    SerializableContentPack.effectPrefabs = SerializableContentPack.effectPrefabs
+                        .Concat(SWAssetsLoader.Instance.LoadAllAssetsByTypeFromAnyBundle<GameObject>().Where(go => go.GetComponent<EffectComponent>()))
                         .ToArray();
                 },
-                delegate
+                () =>
                 {
                     SS2Log.Info($"Swapping material shaders");
                     SWAssetsLoader.Instance.SwapMaterialShaders();
@@ -242,13 +206,13 @@ namespace ShreddedWater
 
             PopulateFieldsDispatchers = new Action[]
             {
-                delegate { PopulateTypeFields(typeof(Artifacts), ContentPack.artifactDefs); },
-                delegate { PopulateTypeFields(typeof(Items), ContentPack.itemDefs); },
-                delegate { PopulateTypeFields(typeof(Equipments), ContentPack.equipmentDefs); },
-                delegate { PopulateTypeFields(typeof(Buffs), ContentPack.buffDefs); },
-                delegate { PopulateTypeFields(typeof(Elites), ContentPack.eliteDefs); },
-                delegate { PopulateTypeFields(typeof(Survivors), ContentPack.survivorDefs); },
-                delegate { PopulateTypeFields(typeof(ItemTierDefs), ContentPack.itemTierDefs); }
+                () => PopulateTypeFields(typeof(Artifacts), ContentPack.artifactDefs),
+                () => PopulateTypeFields(typeof(Items), ContentPack.itemDefs),
+                () => PopulateTypeFields(typeof(Equipments), ContentPack.equipmentDefs),
+                () => PopulateTypeFields(typeof(Buffs), ContentPack.buffDefs),
+                () => PopulateTypeFields(typeof(Elites), ContentPack.eliteDefs),
+                () => PopulateTypeFields(typeof(Survivors), ContentPack.survivorDefs),
+                () => PopulateTypeFields(typeof(ItemTierDefs), ContentPack.itemTierDefs)
             };
         }
     }

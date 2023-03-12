@@ -1,13 +1,6 @@
-using System.IO;
 using BepInEx;
 using Moonstorm;
 using Moonstorm.Starstorm2;
-using R2API;
-using R2API.ScriptableObjects;
-using R2API.Utils;
-using R2API.ContentManagement;
-using R2API.Networking;
-using UnityEngine;
 
 namespace ShreddedWater
 {
@@ -40,61 +33,46 @@ namespace ShreddedWater
     [BepInDependency("com.TeamMoonstorm.MoonstormSharedUtils", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.RiskyLives.RiskyMod", BepInDependency.DependencyFlags.SoftDependency)]
-    // [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(Guid, ModName, Version)]
-	public class SWMain : BaseUnityPlugin
+	public sealed class SWPlugin : CommonUnityPlugin<SWPlugin>
 	{
-		public const string Guid = "com.caxapexac.ShreddedWater";
-		public const string ModName = "Shredded Water";
-		public const string Version = "0.0.1";
+		private const string Guid = "com.caxapexac.ShreddedWater";
+		private const string ModName = "Shredded Water";
+		private const string Version = "0.0.1";
 
-		public static SWMain Instance { get; private set; }
-		public static PluginInfo PluginInfo;
-		public string PluginAssemblyDir => Path.GetDirectoryName(SWMain.PluginInfo.Location);
-
-		public static bool ScepterInstalled = false;
-		public static bool RiskyModInstalled = false;
-
-
-		private void Awake()
+		private SWAssetsLoader _assetsLoader;
+		private SWConfigLoader _configLoader;
+		private SWContentLoader _contentLoader;
+		private SWLanguageLoader _languageLoader;
+		private SWSoundLoader _soundLoader;
+		private SWCompatibilityLoader _compatibilityLoader;
+		
+		protected override void OnAwake()
 		{
-			Instance = this;
-			PluginInfo = Info;
 			SS2Log.logger = Logger;
 #if DEBUG
 			gameObject.AddComponent<SWDebugUtil>();
 #endif
-			new SWAssetsLoader().Init();
-			new SWConfigLoader().Init();
-			new SWContentLoader().Init();
-			new SWLanguage().Init();
+			_assetsLoader = new SWAssetsLoader();
+			_assetsLoader.Init();
+			_configLoader = new SWConfigLoader(this);
+			_configLoader.Init();
+			_contentLoader = new SWContentLoader();
+			_contentLoader.Init();
+			_languageLoader = new SWLanguageLoader();
+			_languageLoader.Init();
 			ConfigurableFieldManager.AddMod(this);
 
 			//N: i have no idea if SystemInitializer would be too late for this, so it stays here for now.
 			// R2API.Networking.NetworkingAPI.RegisterMessageType<ScriptableObjects.NemesisSpawnCard.SyncBaseStats>();
-		}	
-		
-		private void Start()
-		{
-			// SoundBankManager.Init();
-			SetupModCompat();
-			//On.RoR2.EquipmentCatalog.Init += RemoveUnfitEquipmentsFromChaos;
 		}
-		
-		//private void RemoveUnfitEquipmentsFromChaos(EquipmentCatalog.orig_Init orig)
-		//{
-		//    orig();
-		//    SS2Content.Equipments.BackThruster.canBeRandomlyTriggered = false;
-		//    SS2Content.Equipments.PressurizedCanister.canBeRandomlyTriggered = false;
-		//    SS2Content.Equipments.MIDAS.canBeRandomlyTriggered = false;
-		//    //EquipmentCatalog.randomTriggerEquipmentList.Remove(SS2Content.Equipments.BackThruster.equipmentIndex);
-		//    //EquipmentCatalog.randomTriggerEquipmentList.Remove(SS2Content.Equipments.PressurizedCanister.equipmentIndex);
-		//}
 
-		private void SetupModCompat()
+		protected override void OnStart()
 		{
-			ScepterInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
-			RiskyModInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.RiskyLives.RiskyMod");
+			_soundLoader = new SWSoundLoader(this);
+			_soundLoader.Init();
+			_compatibilityLoader = new SWCompatibilityLoader();
+			_compatibilityLoader.Init();
 		}
 	}
 }

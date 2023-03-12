@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StagingPaths:
   - <BuildPathPlugins>
-  rootFolderName: SWLang
+  rootFolderName: languages
   languageFolders:
   - languageName: en
     languageFiles:

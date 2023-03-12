@@ -3,12 +3,16 @@ using UnityEngine;
 
 namespace ShreddedWater
 {
-    // You can enable MSUDebug's debug features in its config file
     public class SWDebugUtil : MonoBehaviour
     {
         private void Update()
         {
-            // var input0 = Input.GetKeyDown(KeyCode.Home);
+            if (Input.GetKeyDown(KeyCode.Home))
+            {
+                Chat.SendBroadcastChat(new Chat.SimpleChatMessage { baseToken = "Ahoy" });
+            }
+            
+            // var input0 = ;
             // var input1 = Input.GetKeyDown(KeyCode.PageUp);
             // var input2 = Input.GetKeyDown(KeyCode.Delete);
             // if (input0)
