@@ -2,7 +2,7 @@
 
 ## Development environment setup
 
-- Unity 2019.4.26f1
+- [Unity 2019.4.26f1](unityhub://2019.4.26f1/e0392c6b2363)
 - ThunderKit Settings -> Import Configuration
   - Everyting in `ON`
   - Import Projects Settings is `Everything`
