@@ -6,7 +6,7 @@ namespace ShreddedWater
 {
     public class SWLanguage : LanguageLoader<SWLanguage>
     {
-        public override string AssemblyDir => SWAssetsLoader.Instance.AssemblyDir;
+        public override string AssemblyDir => SWMain.Instance.PluginAssemblyDir;
 
         public override string LanguagesFolderName => "SWLang";
 

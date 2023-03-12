@@ -1,3 +1,4 @@
+using System.IO;
 using BepInEx;
 using Moonstorm;
 using Moonstorm.Starstorm2;
@@ -49,7 +50,7 @@ namespace ShreddedWater
 
 		public static SWMain Instance { get; private set; }
 		public static PluginInfo PluginInfo;
-		public static bool DEBUG = true;
+		public string PluginAssemblyDir => Path.GetDirectoryName(SWMain.PluginInfo.Location);
 
 		public static bool ScepterInstalled = false;
 		public static bool RiskyModInstalled = false;

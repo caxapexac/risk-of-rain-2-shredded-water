@@ -1,16 +1,12 @@
 ﻿using Moonstorm.Loaders;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using Moonstorm;
 using Moonstorm.Starstorm2;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
-using Path = System.IO.Path;
 
 namespace ShreddedWater
 {
@@ -22,23 +18,22 @@ namespace ShreddedWater
         // Base,
         // Artifacts,
         // Executioner,
-        // Nemmando,
         // Equipments,
         // Items,
         // Events,
         // Vanilla,
-        // Indev,
+        // InDev,
         // Shared
     }
     
-    public class SWAssetsLoader : AssetsLoader<SWAssetsLoader>
+    public sealed class SWAssetsLoader : AssetsLoader<SWAssetsLoader>
     {
-        private const string ASSET_BUNDLE_FOLDER_NAME = "assetbundles";
-        private const string MAIN = "swmain";
+        private const string AssetBundleFolderName = "assetbundles";
+        
+        private const string BundleMain = "swmain";
         // private const string BASE = "ss2base";
         // private const string ARTIFACTS = "ss2artifacts";
         // private const string EXECUTIONER = "ss2executioner";
-        // private const string NEMMANDO = "ss2nemmando";
         // private const string EQUIPS = "ss2equipments";
         // private const string ITEMS = "ss2items";
         // private const string EVENTS = "ss2events";
@@ -46,30 +41,13 @@ namespace ShreddedWater
         // private const string DEV = "ss2dev";
         // private const string SHARED = "ss2shared";
 
-        private static Dictionary<SWBundleEnum, AssetBundle> assetBundles = new Dictionary<SWBundleEnum, AssetBundle>();
-        
-        //         [Obsolete("LoadAsset should not be used without specifying the SS2Bundle")]
-        //         public new static TAsset LoadAsset<TAsset>(string name) where TAsset : UnityEngine.Object
-        //         {
-        // #if DEBUG
-        //             SS2Log.Warning($"Method {SS2Util.GetCallingMethod<SWAssets>()} is trying to load an asset of name {name} and type {typeof(TAsset).Name} without specifying what bundle to use for loading. This causes large performance loss as SS2Assets has to search thru the entire bundle collection. Avoid calling LoadAsset without specifying the AssetBundle.");
-        // #endif
-        //             return LoadAsset<TAsset>(name, SWBundleEnum.All);
-        //         }
-        //         [Obsolete("LoadAllAssetsOfType should not be used without specifying the SS2Bundle")]
-        //         public new static TAsset[] LoadAllAssetsOfType<TAsset>() where TAsset : UnityEngine.Object
-        //         {
-        // #if DEBUG
-        //             SS2Log.Warning($"Method {SS2Util.GetCallingMethod<SWAssets>()} is trying to load all assets of type {typeof(TAsset).Name} without specifying what bundle to use for loading. This causes large performance loss as SS2Assets has to search thru the entire bundle collection. Avoid calling LoadAsset without specifying the AssetBundle.");
-        // #endif
-        //             return LoadAllAssetsOfType<TAsset>(SWBundleEnum.All);
-        //         } 
+        private static readonly Dictionary<SWBundleEnum, AssetBundle> _assetBundles = new Dictionary<SWBundleEnum, AssetBundle>();
 
         public static TAsset LoadAsset<TAsset>(string name, SWBundleEnum bundle) where TAsset : UnityEngine.Object
         {
             if(Instance == null)
             {
-                SS2Log.Error("Cannot load asset when there's no isntance of SS2Assets!");
+                SS2Log.Error($"Cannot load asset when there's no instance of {nameof(SWAssetsLoader)}");
                 return null;
             }
             return Instance.LoadAssetInternal<TAsset>(name, bundle);
@@ -78,36 +56,36 @@ namespace ShreddedWater
         {
             if(Instance == null)
             {
-                SS2Log.Error("Cannot load asset when there's no instance of SS2Assets!");
+                SS2Log.Error($"Cannot load asset when there's no instance of {nameof(SWAssetsLoader)}");
                 return null;
             }
             return Instance.LoadAllAssetsOfTypeInternal<TAsset>(bundle);
         }
         
         public override AssetBundle MainAssetBundle => GetAssetBundle(SWBundleEnum.Main);
-        public string AssemblyDir => Path.GetDirectoryName(SWMain.PluginInfo.Location);
-        public AssetBundle GetAssetBundle(SWBundleEnum bundle)
+        
+        public static AssetBundle GetAssetBundle(SWBundleEnum bundle)
         {
-            return assetBundles[bundle];
+            return _assetBundles[bundle];
         }
+        
         internal void Init()
         {
-            var bundlePaths = GetAssetBundlePaths();
+            string[] bundlePaths = GetAssetBundlePaths();
             foreach(string path in bundlePaths)
             {
-                var fileName = Path.GetFileName(path);
+                string fileName = Path.GetFileName(path);
                 switch(fileName)
                 {
-                    case MAIN: LoadBundle(path, SWBundleEnum.Main); break;
+                    case BundleMain: LoadBundle(path, SWBundleEnum.Main); break;
                     // case BASE: LoadBundle(path, SWBundleEnum.Base); break;
                     // case ARTIFACTS: LoadBundle(path, SWBundleEnum.Artifacts); break;
                     // case EXECUTIONER: LoadBundle(path, SWBundleEnum.Executioner); break;
-                    // case NEMMANDO: LoadBundle(path, SWBundleEnum.Nemmando); break;
                     // case EQUIPS: LoadBundle(path, SWBundleEnum.Equipments); break;
                     // case ITEMS: LoadBundle(path, SWBundleEnum.Items); break;
                     // case EVENTS: LoadBundle(path, SWBundleEnum.Events); break;
                     // case VANILLA: LoadBundle(path, SWBundleEnum.Vanilla); break;
-                    // case DEV: LoadBundle(path, SWBundleEnum.Indev); break;
+                    // case DEV: LoadBundle(path, SWBundleEnum.InDev); break;
                     // case SHARED: LoadBundle(path, SWBundleEnum.Shared); break;
                     default: SS2Log.Warning($"Invalid or Unexpected file in the AssetBundles folder (File name: {fileName}, Path: {path})"); break;
                 }
@@ -123,16 +101,16 @@ namespace ShreddedWater
                         throw new FileLoadException("AssetBundle.LoadFromFile did not return an asset bundle");
                     }
 
-                    if(assetBundles.ContainsKey(bundleEnum))
+                    if(_assetBundles.ContainsKey(bundleEnum))
                     {
-                        throw new InvalidOperationException($"AssetBundle in path loaded succesfully, but the assetBundles dictionary already contains an entry for {bundleEnum}.");
+                        throw new InvalidOperationException($"AssetBundle in path loaded successfully, but the assetBundles dictionary already contains an entry for {bundleEnum}.");
                     }
 
-                    assetBundles[bundleEnum] = bundle;
+                    _assetBundles[bundleEnum] = bundle;
                 }
                 catch(Exception e)
                 {
-                    SS2Log.Error($"Could not load assetbundle at path {path} and assign to enum {bundleEnum}. {e}");
+                    SS2Log.Error($"Could not load asset bundle at path {path} and assign to enum {bundleEnum}. {e}");
                 }
             }
         }
@@ -156,7 +134,7 @@ namespace ShreddedWater
                 return asset;
             }
 
-            asset = assetBundles[bundle].LoadAsset<TAsset>(name);
+            asset = _assetBundles[bundle].LoadAsset<TAsset>(name);
 #if DEBUG
             if(!asset)
             {
@@ -169,7 +147,7 @@ namespace ShreddedWater
 
             TAsset FindAsset<TAsset>(string assetName, out SWBundleEnum foundInBundle) where TAsset : UnityEngine.Object
             {
-                foreach((var enumVal, var assetBundle) in assetBundles)
+                foreach((var enumVal, var assetBundle) in _assetBundles)
                 {
                     var loadedAsset = assetBundle.LoadAsset<TAsset>(assetName);
                     if (loadedAsset)
@@ -198,7 +176,7 @@ namespace ShreddedWater
                 return loadedAssets.ToArray();
             }
 
-            loadedAssets = assetBundles[bundle].LoadAllAssets<TAsset>().ToList();
+            loadedAssets = _assetBundles[bundle].LoadAllAssets<TAsset>().ToList();
 #if DEBUG
             if (loadedAssets.Count == 0)
             {
@@ -209,7 +187,7 @@ namespace ShreddedWater
 
             void FindAssets<TAsset>(List<TAsset> output) where TAsset: UnityEngine.Object
             {
-                foreach((var _, var bndl) in assetBundles)
+                foreach((var _, var bndl) in _assetBundles)
                 {
                     output.AddRange(bndl.LoadAllAssets<TAsset>());
                 }
@@ -224,7 +202,7 @@ namespace ShreddedWater
 
         internal void FinalizeCopiedMaterials()
         {
-            foreach(var (_, bundle) in assetBundles)
+            foreach(var (_, bundle) in _assetBundles)
             {
                 FinalizeMaterialsWithAddressableMaterialShader(bundle);
             }
@@ -232,7 +210,7 @@ namespace ShreddedWater
 
         private string[] GetAssetBundlePaths()
         {
-            return Directory.GetFiles(Path.Combine(AssemblyDir, ASSET_BUNDLE_FOLDER_NAME))
+            return Directory.GetFiles(Path.Combine(SWMain.Instance.PluginAssemblyDir, AssetBundleFolderName))
                .Where(filePath => !filePath.EndsWith(".manifest"))
                .ToArray();
         }
