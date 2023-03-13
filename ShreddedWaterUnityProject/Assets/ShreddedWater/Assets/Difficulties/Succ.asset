@@ -15,7 +15,7 @@ MonoBehaviour:
   scalingValue: 3.5
   descriptionToken: SW_DIFFICULTY_SUCC_DESC
   nameToken: SW_DIFFICULTY_SUCC_NAME
-  serverTag: ty
+  serverTag: su
   countsAsHardMode: 1
   preferPositiveIndex: 0
   difficultyColor: {r: 0, g: 0.6415094, b: 0.05809201, a: 1}

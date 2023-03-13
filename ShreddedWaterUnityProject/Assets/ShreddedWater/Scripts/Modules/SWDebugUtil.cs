@@ -39,3 +39,26 @@ namespace ShreddedWater
         }
     }
 }
+
+
+/*
+TODO
+
+BaseItemMasterBehavior
+ContentModules
+ Buffs
+ Characters
+ DamageTypes
+ EntityStates
+ Equip
+ Items
+ Projectiles
+ Unlockables checks
+  
+  
+  
+  
+  
+ 
+
+*/

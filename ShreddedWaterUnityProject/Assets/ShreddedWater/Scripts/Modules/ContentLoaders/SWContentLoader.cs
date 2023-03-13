@@ -155,47 +155,22 @@ namespace ShreddedWater
 
             LoadDispatchers = new Action[]
             {
-                // () => new Modules.Scenes().Initialize(),
-                // () => new Modules.ItemTiers().Initialize(),
-                // () => new Modules.Items().Initialize(),
-                // () => new Modules.Equipments().Initialize(),
-                // () => new Modules.Buffs().Initialize(),
-                // () => new Modules.DamageTypes().Initialize(),
-                // () => new Modules.Projectiles().Initialize(),
-                // () => new Modules.Elites().Initialize(),
-                () => DifficultySucc.Init(),
-                () =>
-                {
-                    // if (SWConfig.EnableEvents.Value)
-                    // {
-                    //     Events.Init();
-                    // }
-                },
-                // () => new Modules.Characters().Initialize(),
-                // () => new Modules.Artifacts().Initialize(),
-                // () => new Modules.Interactables().Initialize(),
-                // () => new Modules.Unlockables().Initialize(),
-                () =>
-                {
-                    SS2Log.Info($"Populating entity state array");
-                    GetType()
-                        .Assembly.GetTypes()
-                        .Where(type => typeof(EntityStates.EntityState).IsAssignableFrom(type))
-                        .ToList()
-                        .ForEach(state => HG.ArrayUtils.ArrayAppend(ref SerializableContentPack.entityStateTypes, new EntityStates.SerializableEntityStateType(state)));
-                },
-                () =>
-                {
-                    SS2Log.Info($"Populating EntityStateConfigurations");
-                    SerializableContentPack.entityStateConfigurations = SWAssetsLoader.Instance.LoadAllAssetsByTypeFromAnyBundle<EntityStateConfiguration>();
-                },
-                () =>
-                {
-                    SS2Log.Info($"Populating effect prefabs");
-                    SerializableContentPack.effectPrefabs = SerializableContentPack.effectPrefabs
-                        .Concat(SWAssetsLoader.Instance.LoadAllAssetsByTypeFromAnyBundle<GameObject>().Where(go => go.GetComponent<EffectComponent>()))
-                        .ToArray();
-                },
+                () => new SceneModule().Initialize(),
+                () => new ItemTierModule().Initialize(),
+                () => new ItemModule().Initialize(),
+                () => new EquipmentModule().Initialize(),
+                () => new BuffModule().Initialize(),
+                () => new DamageTypeModule().Initialize(),
+                () => new ProjectileModule().Initialize(),
+                () => new EliteModule().Initialize(),
+                () => DifficultyModule.Init(),
+                () => EventModule.Init(),
+                () => new CharacterModule().Initialize(),
+                () => new ArtifactModule().Initialize(),
+                () => new InteractableModule().Initialize(),
+                () => new UnlockablesModule().Initialize(),
+                () => EntityStateModule.Init(),
+                () => EffectModule.Init(),
                 () =>
                 {
                     SS2Log.Info($"Swapping material shaders");
@@ -212,7 +187,7 @@ namespace ShreddedWater
                 () => PopulateTypeFields(typeof(Buffs), ContentPack.buffDefs),
                 () => PopulateTypeFields(typeof(Elites), ContentPack.eliteDefs),
                 () => PopulateTypeFields(typeof(Survivors), ContentPack.survivorDefs),
-                () => PopulateTypeFields(typeof(ItemTierDefs), ContentPack.itemTierDefs)
+                () => PopulateTypeFields(typeof(ItemTierDefs), ContentPack.itemTierDefs),
             };
         }
     }
