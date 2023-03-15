@@ -1,0 +1,294 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4467616490986340797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b243ff405b33b94dbf5b6775dd9aa33, type: 3}
+  m_Name: Files
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <BuildPath>
+  files: []
+--- !u!114 &-3892906877110538616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3230df44b431ebc49a958dde5afa4f88, type: 3}
+  m_Name: LanguageFolderTree
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <BuildPathPlugins>
+  rootFolderName: SS2Lang
+  languageFolders:
+  - languageName: en
+    languageFiles:
+    - {fileID: 4900000, guid: d314a5da055ee594385d47b2becd9b08, type: 3}
+    - {fileID: 4900000, guid: 52ce4347d2d5ea34a9de30e0ec0b4f62, type: 3}
+    - {fileID: 4900000, guid: 7942f1666d529314c9caff9caa475ff4, type: 3}
+    - {fileID: 4900000, guid: 2e06992ef9ab233468e1d8c4d5d155ae, type: 3}
+    - {fileID: 4900000, guid: d99bc0c76e1450f4695be3ae9287245c, type: 3}
+    - {fileID: 4900000, guid: 61460e0cb44b30347b2227f959936494, type: 3}
+    - {fileID: 4900000, guid: 849c355cc6270b0448bec8a977d756e4, type: 3}
+    - {fileID: 4900000, guid: 464d0f72901dde34981641d0d1109c75, type: 3}
+    - {fileID: 4900000, guid: 8ebc6d6fc1febf84cb526fcce77e6564, type: 3}
+    - {fileID: 4900000, guid: 8659caeae3f8e8b4d888dca580e8c369, type: 3}
+    - {fileID: 4900000, guid: ad5d4a7e31800d845b2be356fa4953dd, type: 3}
+    - {fileID: 4900000, guid: a18f395e47fec9140bd068ac2426f0a9, type: 3}
+    - {fileID: 4900000, guid: 4f485e447382235498ec80cf1736291a, type: 3}
+    - {fileID: 4900000, guid: 58976d127983db0488a8e83e325374d8, type: 3}
+    - {fileID: 4900000, guid: 37d47de16d6232848aac46269f7d8a37, type: 3}
+    - {fileID: 4900000, guid: b1468e0a381e7ed45aec32962e1fd802, type: 3}
+    - {fileID: 4900000, guid: 78443f57f4418b949884c7d997c3398a, type: 3}
+    - {fileID: 4900000, guid: f9ca219cecc72fd4899304ca7bb25d21, type: 3}
+    - {fileID: 4900000, guid: 13fe798c37723cc48b289e28a503934a, type: 3}
+    - {fileID: 4900000, guid: fc38ddd51c6e8bc41a54bbfc7ae59046, type: 3}
+    - {fileID: 4900000, guid: bbae9c1147cc4264c92f2f0c357e04f4, type: 3}
+    - {fileID: 4900000, guid: b4b523cf216429d42ba6363ff825c55b, type: 3}
+    - {fileID: 4900000, guid: 2e7ed6e41bae879438722ffc61ef49d1, type: 3}
+    - {fileID: 4900000, guid: 5b3534711f9bfa94485d4f6872f3f057, type: 3}
+    - {fileID: 4900000, guid: 4e60f5bb0ca02994e83e39c070d46eaa, type: 3}
+    - {fileID: 4900000, guid: e31d442070d32714e9333d8ae15667fe, type: 3}
+    - {fileID: 4900000, guid: 4efd28040918b1243aec5730e4a84042, type: 3}
+    - {fileID: 4900000, guid: b0caa26bfe7a6974abbe4f96dda8aa26, type: 3}
+    - {fileID: 4900000, guid: 75fb51340842194409b4ba59e8fe6ab1, type: 3}
+    - {fileID: 4900000, guid: 82945b7e051c44c408e3a0d1735db1e2, type: 3}
+    - {fileID: 4900000, guid: 2fe345c697827eb4d9e2d5c1c86b0f46, type: 3}
+  - languageName: es-ES
+    languageFiles:
+    - {fileID: 4900000, guid: 70a613ff95125ec4daccbfd58cacb851, type: 3}
+  - languageName: FR
+    languageFiles:
+    - {fileID: 4900000, guid: a13c3684699ca154497ed49d0d30b428, type: 3}
+  - languageName: RU
+    languageFiles:
+    - {fileID: 4900000, guid: 83983d5ec1e01594dad79171e9eefd36, type: 3}
+    - {fileID: 4900000, guid: 87e7a252f1c10c942a4c2c061306a3e6, type: 3}
+    - {fileID: 4900000, guid: 39c877abd32d207458ea05a3ade4291e, type: 3}
+    - {fileID: 4900000, guid: 5d3d14d34f18c64489e69d3383eae45e, type: 3}
+    - {fileID: 4900000, guid: e44203aa2d5bb2c4a8718a9fa8788cbe, type: 3}
+    - {fileID: 4900000, guid: 570168aeadd8aa14ea1b52c36bc412c2, type: 3}
+    - {fileID: 4900000, guid: bb12274c97be45746b9fe2289b7219ab, type: 3}
+    - {fileID: 4900000, guid: 4b040053d478b7f4f8c636ce6726fe0d, type: 3}
+    - {fileID: 4900000, guid: 875642794a5356b469e659670a7cd34e, type: 3}
+    - {fileID: 4900000, guid: 2c4d9e69e5f084c48ae52b9ef5feabe6, type: 3}
+    - {fileID: 4900000, guid: fc852367ce3b0c64685922493be091f9, type: 3}
+    - {fileID: 4900000, guid: 57c683a1d7faa134eb24f068b1e51924, type: 3}
+    - {fileID: 4900000, guid: 8b6a30208e791424cb502e3182c74ff5, type: 3}
+    - {fileID: 4900000, guid: 68b375334c13e784eb9c1dbfea80fd91, type: 3}
+    - {fileID: 4900000, guid: 43d5f5ac5feb97d4b8b99471a1fbd6dd, type: 3}
+    - {fileID: 4900000, guid: af618fcf4d5e02f44824b00539e75066, type: 3}
+    - {fileID: 4900000, guid: 2b1f9962f2594cf43835d5d735fce9be, type: 3}
+    - {fileID: 4900000, guid: bc5ef7a3b54a13b4e8f50bc469d764b8, type: 3}
+    - {fileID: 4900000, guid: 5e1a57b29a8be73468cd466fb944b894, type: 3}
+    - {fileID: 4900000, guid: 68d320853b056b14e8bf6e70c7399f09, type: 3}
+    - {fileID: 4900000, guid: 0f89c22dcfdb40c4fbabdaa0957a8beb, type: 3}
+    - {fileID: 4900000, guid: 75e703c995ec2b94ea37d369b67c3ec1, type: 3}
+    - {fileID: 4900000, guid: d51de46e4bd2ba14b91175b57b016b22, type: 3}
+    - {fileID: 4900000, guid: 6d73f6d120af43d47a760b847da45dcb, type: 3}
+    - {fileID: 4900000, guid: 4fc46707d9f47a9458c20ba3228e9d71, type: 3}
+    - {fileID: 4900000, guid: 7bb2ddd0cd15abf4cab48c34c7257d6b, type: 3}
+    - {fileID: 4900000, guid: 434ea54fd7b5a224b88eefc70d9675bb, type: 3}
+    - {fileID: 4900000, guid: 859baa30671ccc84e96f0b0e80f9b4a9, type: 3}
+    - {fileID: 4900000, guid: 97656af0efd5f1144b6e2b43b3b72f02, type: 3}
+    - {fileID: 4900000, guid: 9058d81acb1992d4391402753609052f, type: 3}
+  - languageName: tr
+    languageFiles:
+    - {fileID: 4900000, guid: efb907279fac2824f883977b6eec632c, type: 3}
+  - languageName: pt-BR
+    languageFiles:
+    - {fileID: 4900000, guid: 6b147fe13bdb18c4b911708e65e38fee, type: 3}
+    - {fileID: 4900000, guid: d350d3532eb100849a2c77ecb0be7185, type: 3}
+    - {fileID: 4900000, guid: 55515f6d187a1304298089af8bc8c596, type: 3}
+    - {fileID: 4900000, guid: 092ef49462273c94383edfbc58d1dc85, type: 3}
+    - {fileID: 4900000, guid: 5175c7203cfd2e140837e4501a5ff534, type: 3}
+    - {fileID: 4900000, guid: 675c3fd6a6f59f64ba8cf1aef8199544, type: 3}
+    - {fileID: 4900000, guid: e92386c6c3d0eeb4e9b27b927de89b04, type: 3}
+    - {fileID: 4900000, guid: 7a7fb8bfa4129bb4c80ea21520d3666d, type: 3}
+    - {fileID: 4900000, guid: bf89d03ee217e594682a06ccb5503050, type: 3}
+    - {fileID: 4900000, guid: fb136f64c7febec4fa8665ab72262849, type: 3}
+    - {fileID: 4900000, guid: 6f956421d375a484b8ef31356c734137, type: 3}
+    - {fileID: 4900000, guid: e275d0ae8286e2440ab60521a0cff2cd, type: 3}
+    - {fileID: 4900000, guid: cd028626a0f9a404bbec056c4583548e, type: 3}
+    - {fileID: 4900000, guid: 6ce20eb9425290a47b59fff424a27d97, type: 3}
+    - {fileID: 4900000, guid: e79190f94d512bf47b4c7a4133c42e75, type: 3}
+    - {fileID: 4900000, guid: 2d55f2195bd73c64e88bb054563df663, type: 3}
+    - {fileID: 4900000, guid: 9e922da6fc6ca2944a3fd7fc8db0bcda, type: 3}
+    - {fileID: 4900000, guid: c09b4c2d8deed234fb1ec8e9e433bb14, type: 3}
+    - {fileID: 4900000, guid: 3ddf4740d7abc6540958ffa1d1927eef, type: 3}
+    - {fileID: 4900000, guid: 2345e1f0553f3b240a344e726735c027, type: 3}
+    - {fileID: 4900000, guid: 8b7d12bdf49e0c3419b82669f2eeb6f4, type: 3}
+    - {fileID: 4900000, guid: dc0d9669718bc6243b4804ad0fdc3d18, type: 3}
+    - {fileID: 4900000, guid: 4c3170b4329126e4fbc581379562d89e, type: 3}
+    - {fileID: 4900000, guid: 3a45d286c6720cf4caca5bd9530ca82b, type: 3}
+    - {fileID: 4900000, guid: 5d6a729a2193db24f819ccfb81abdcef, type: 3}
+    - {fileID: 4900000, guid: 3925214c1778ff74eb0dd650ac5bd19f, type: 3}
+    - {fileID: 4900000, guid: 4458c8f290363c04289799cbad61b05e, type: 3}
+    - {fileID: 4900000, guid: b1e9727bd42c001449636740846ebfaf, type: 3}
+    - {fileID: 4900000, guid: d72d3f14203155c4f9acc14f6ef15f43, type: 3}
+    - {fileID: 4900000, guid: eb000caebfb4c584999fbf4d185a7220, type: 3}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e563561e08b6a3642a487177f5cfbb37, type: 3}
+  m_Name: SS2-Manifest
+  m_EditorClassIdentifier: 
+  Data:
+  - {fileID: 114211852988908172}
+  - {fileID: 114107831304456238}
+  - {fileID: 114431642618062350}
+  - {fileID: 114987763159783732}
+  - {fileID: -3892906877110538616}
+  - {fileID: 8324102109481770816}
+  - {fileID: -4467616490986340797}
+  identity: {fileID: 114211852988908172}
+  QuickAccess: 0
+--- !u!114 &114107831304456238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7e13dda513544419a89926bd12ad8a, type: 3}
+  m_Name: AssemblyDefinitions
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <BuildPathPlugins>
+  definitions:
+  - {fileID: 5897886265953266890, guid: f054131d8b8c38f49bfb7567178d0531, type: 3}
+--- !u!114 &114211852988908172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22bb7fd1d3b56a48bc52f8e407901d6, type: 3}
+  m_Name: ManifestIdentity
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <ManifestPluginStaging>
+  Author: TeamMoonstorm
+  Name: Starstorm2
+  Description: A sequel of the RoR1 mod Starstorm, featuring new survivors, items,
+    gameplay elements, and more. Updated for DLC1!
+  Version: 0.3.47
+  Dependencies:
+  - {fileID: 11400000, guid: 5ceb1d8ed3af40d4d806e9756b403649, type: 2}
+  - {fileID: 11400000, guid: 890a1759ee352a00d2367557b4d6225f, type: 2}
+  - {fileID: 11400000, guid: 484664494380feb55f0413b710f656ac, type: 2}
+  - {fileID: 11400000, guid: 1b5df2a4c826b6f799002dab33a6b684, type: 2}
+  - {fileID: 11400000, guid: a644a53693d44639c70550096ce74b93, type: 2}
+--- !u!114 &114431642618062350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d1008b78cb6e846889b7778282fbef, type: 3}
+  m_Name: AssetBundleDefinitions
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <BuildPathAssets>
+  assetBundles:
+  - assetBundleName: SS2Main
+    assets:
+    - {fileID: 11400000, guid: 59a1ba2efde60ad44a82ed4c314d08ba, type: 2}
+    - {fileID: 2800000, guid: eb3a70227647f7045b1310400a551084, type: 3}
+    - {fileID: 11400000, guid: bfb165b57e40f194e8fc69d48fd3a187, type: 2}
+    - {fileID: 2800000, guid: ab18fbb30379631499164b1b499a3b9a, type: 3}
+    - {fileID: 2800000, guid: 1973417585079444ea976f56d0d6ddd5, type: 3}
+  - assetBundleName: SS2Base
+    assets:
+    - {fileID: 102900000, guid: 90b5ce85b0fd1454a8828bd58f78fadc, type: 3}
+    - {fileID: 102900000, guid: bf6e7a26ee4dd474d8a1e82dcde8bd24, type: 3}
+    - {fileID: 102900000, guid: 501542b4bcf431240b0346bdaa9917d9, type: 3}
+    - {fileID: 102900000, guid: 3aa584817df1c0b4ab71cb90742e4cbd, type: 3}
+  - assetBundleName: SS2Artifacts
+    assets:
+    - {fileID: 102900000, guid: 3a0ad87d866aef74dba7a41400574ae2, type: 3}
+  - assetBundleName: SS2Executioner
+    assets:
+    - {fileID: 102900000, guid: 1ef117185f394334089203703b6e4d13, type: 3}
+  - assetBundleName: SS2Nemmando
+    assets:
+    - {fileID: 102900000, guid: 418666e089c2c7949b9b779e9d8238ef, type: 3}
+  - assetBundleName: SS2Equipments
+    assets:
+    - {fileID: 102900000, guid: 54c50cc18d9504f47b057c63be6e441e, type: 3}
+  - assetBundleName: SS2Items
+    assets:
+    - {fileID: 102900000, guid: 11b0ea49617bade468afe6088793a9cc, type: 3}
+  - assetBundleName: SS2Events
+    assets:
+    - {fileID: 102900000, guid: 1b7496dcbe7d1ad45a0938f99547c81a, type: 3}
+  - assetBundleName: SS2Vanilla
+    assets:
+    - {fileID: 102900000, guid: 55f7dd6be561cc14cafa245d9a2085fb, type: 3}
+  - assetBundleName: SS2Dev
+    assets:
+    - {fileID: 102900000, guid: 117bdc60d32a3cc4d847c477c2b26d45, type: 3}
+  - assetBundleName: SS2Shared
+    assets:
+    - {fileID: 102900000, guid: 6aaeac829803fd14f9ee898e61c14d8b, type: 3}
+    - {fileID: 102900000, guid: b1284d83472bd1749aeb60d1a09724ef, type: 3}
+    - {fileID: 102900000, guid: 7962a48d8620f5e4dbaf9557535616bc, type: 3}
+    - {fileID: 102900000, guid: 8b2682aa478687745a6b70fa716f563e, type: 3}
+    - {fileID: 102900000, guid: 071e77fdeac30b44e8eed0fd1cd25e4f, type: 3}
+    - {fileID: 2800000, guid: 5f51e0b22aa8cb84b9f422576ce87ff9, type: 3}
+    - {fileID: 102900000, guid: 868db15ebaf1e4f4ea9a3a0769ad8d3a, type: 3}
+--- !u!114 &114987763159783732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b243ff405b33b94dbf5b6775dd9aa33, type: 3}
+  m_Name: Files
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <BuildPathSoundbanks>
+  files:
+  - {fileID: 102900000, guid: fac793598d1cda244bee02231bc2f101, type: 3}
+--- !u!114 &8324102109481770816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a82fec78ebc734d9ad1346cd40b5f9, type: 3}
+  m_Name: ThunderstoreData
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <BuildPath>
+  url: https://github.com/TeamMoonstorm/Starstorm2
