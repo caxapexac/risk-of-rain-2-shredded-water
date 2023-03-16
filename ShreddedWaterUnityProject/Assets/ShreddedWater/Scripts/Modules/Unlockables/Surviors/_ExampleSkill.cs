@@ -1,4 +1,6 @@
-﻿// //using EntityStates.Events;
+﻿// ReSharper disable All
+
+// //using EntityStates.Events;
 // using RoR2;
 // using RoR2.Achievements;
 // using UnityEngine;

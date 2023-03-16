@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace ShreddedWater
 {
-    public class EliteModule : EliteModuleBase
+    public sealed class EliteModule : EliteModuleBase
     {
         public static EliteModule Instance { get; private set; }
         public override R2APISerializableContentPack SerializableContentPack { get; } = SWContentLoader.Instance.SerializableContentPack;
@@ -18,7 +18,7 @@ namespace ShreddedWater
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing Elites...");
+            SS2Log.Info("Initializing Elites...");
             GetInitializedEliteEquipmentBases();
         }
 

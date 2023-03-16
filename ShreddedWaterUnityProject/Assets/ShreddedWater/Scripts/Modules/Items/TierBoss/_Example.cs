@@ -1,4 +1,6 @@
-﻿// using EntityStates.Pickups.Augury;
+﻿// ReSharper disable All
+
+// using EntityStates.Pickups.Augury;
 // using RoR2;
 // using RoR2.Items;
 // using System;

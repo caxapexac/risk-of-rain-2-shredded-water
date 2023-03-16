@@ -1,4 +1,6 @@
-﻿// using R2API;
+﻿// ReSharper disable All
+
+// using R2API;
 // using RoR2;
 // using UnityEngine.Networking;
 //

@@ -1,4 +1,6 @@
-﻿// using EntityStates;
+﻿// ReSharper disable All
+
+// using EntityStates;
 // using Moonstorm.Starstorm2.Components;
 // using R2API;
 // using RoR2;

@@ -4,6 +4,7 @@ using System.Linq;
 using Moonstorm;
 using Moonstorm.Starstorm2;
 
+
 namespace ShreddedWater
 {
     public sealed class CharacterModule : CharacterModuleBase
@@ -16,7 +17,7 @@ namespace ShreddedWater
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing Bodies.");
+            SS2Log.Info("Initializing Bodies.");
             GetCharacterBases();
         }
 

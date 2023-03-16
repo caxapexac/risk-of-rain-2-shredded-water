@@ -5,13 +5,14 @@ namespace Moonstorm.Starstorm2
 {
     public abstract class BaseMasteryAchievement : BaseAchievement
     {
-        public BaseMasteryAchievement(float requiredDifficultyCoefficient, CharacterBody requiredCharacterBody)
+        protected BaseMasteryAchievement(float requiredDifficultyCoefficient, CharacterBody requiredCharacterBody)
         {
+            // TODO is a problem?
             RequiredDifficultyCoefficient = requiredDifficultyCoefficient;
             RequiredCharacterBody = requiredCharacterBody;
         }
 
-        public BaseMasteryAchievement()
+        protected BaseMasteryAchievement()
         {
 
         }
@@ -37,7 +38,7 @@ namespace Moonstorm.Starstorm2
                 DifficultyDef runDifficulty = DifficultyCatalog.GetDifficultyDef(difficultyIndex);
                 
                 if ((runDifficulty.countsAsHardMode && runDifficulty.scalingValue >= RequiredDifficultyCoefficient) || //check our required difficulty coefficient
-                    (difficultyIndex >= DifficultyIndex.Eclipse1 && difficultyIndex <= DifficultyIndex.Eclipse8) || //check for eclipse (to be consistent with other grand masteries)
+                    (difficultyIndex >= DifficultyIndex.Eclipse1 && difficultyIndex <= DifficultyIndex.Eclipse8) || //check for eclipse
                     (runDifficulty.nameToken == "INFERNO_NAME")) //check for inferno mod, as it starts at monsoon coefficient but scales higher
                 {
                     Grant();

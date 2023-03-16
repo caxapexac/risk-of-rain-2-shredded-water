@@ -16,7 +16,7 @@ namespace ShreddedWater
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing Scenes.");
+            SS2Log.Info("Initializing Scenes.");
             GetSceneBases();
         }
 

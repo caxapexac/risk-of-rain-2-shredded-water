@@ -1,4 +1,6 @@
-﻿// using R2API;
+﻿// ReSharper disable All
+
+// using R2API;
 // using RoR2;
 // using RoR2.Items;
 // using RoR2.Projectile;

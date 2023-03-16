@@ -5,8 +5,6 @@ using System.Linq;
 using System.Reflection;
 using Moonstorm;
 using Moonstorm.Starstorm2;
-using ShreddedWater;
-using UObject = UnityEngine.Object;
 
 
 namespace ShreddedWater
@@ -21,14 +19,14 @@ namespace ShreddedWater
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing Unlockables.");
+            SS2Log.Info("Initializing Unlockables.");
             GetUnlockableBases();
         }
 
         protected override IEnumerable<UnlockableBase> GetUnlockableBases()
         {
             IEnumerable<UnlockableBase> allUnlocks = base.GetUnlockableBases();
-            
+
             SS2Log.Info($"Unlock all config is {SWConfigLoader.Instance.EntryUnlockAll.Value}");
             if (SWConfigLoader.Instance.EntryUnlockAll.Value)
             {
@@ -42,10 +40,7 @@ namespace ShreddedWater
 
         private void RemoveAllNonSkinUnlocks()
         {
-            //This should load all the assets we have that:
-            //Are not skin defs
-            //Have a field that has an UnlockableDef field.
-            IEnumerable<UObject> allAssets = SWAssetsLoader.Instance.MainAssetBundle.LoadAllAssets()
+            IEnumerable<UnityEngine.Object> allAssets = SWAssetsLoader.Instance.MainAssetBundle.LoadAllAssets()
                 .Where(asset => !(asset is SkinDef))
                 .Where(asset => asset
                         .GetType()
@@ -53,7 +48,7 @@ namespace ShreddedWater
                         .Count(fieldInfo => fieldInfo.FieldType == typeof(UnlockableDef))
                     > 0);
 
-            foreach (UObject asset in allAssets)
+            foreach (UnityEngine.Object asset in allAssets)
             {
                 IEnumerable<FieldInfo> fieldsInAsset = asset.GetType()
                     .GetFields()

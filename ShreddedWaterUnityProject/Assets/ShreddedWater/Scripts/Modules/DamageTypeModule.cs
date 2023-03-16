@@ -6,7 +6,7 @@ using Moonstorm.Starstorm2;
 
 namespace ShreddedWater
 {
-    public class DamageTypeModule : DamageTypeModuleBase
+    public sealed class DamageTypeModule : DamageTypeModuleBase
     {
         public static DamageTypeModule Instance { get; private set; }
 
@@ -14,7 +14,7 @@ namespace ShreddedWater
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing DamageTypes.");
+            SS2Log.Info("Initializing DamageTypes.");
             GetDamageTypeBases();
         }
 

@@ -1,4 +1,6 @@
-﻿// using Moonstorm.Experimental;
+﻿// ReSharper disable All
+
+// using Moonstorm.Experimental;
 // using RoR2;
 // using System;
 // using System.Collections.Generic;

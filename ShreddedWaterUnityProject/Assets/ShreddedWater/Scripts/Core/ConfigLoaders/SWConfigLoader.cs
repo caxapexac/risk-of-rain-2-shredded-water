@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
-using Moonstorm.Loaders;
 using UnityEngine;
 
 
@@ -8,13 +7,8 @@ namespace ShreddedWater
 {
     public sealed class SWConfigLoader : CommonConfigLoader<SWConfigLoader>
     {
-        public const string ConfigNameItems = "Items";
-        public const string ConfigNameEquips = "Equips";
-        public const string ConfigNameInteractables = "Interactables";
-
         public override BaseUnityPlugin MainClass => SWPlugin.Instance;
-
-        public ConfigFile ConfigItems;
+        
         public ConfigFile ConfigEquips;
         public ConfigFile ConfigInteractables;
 
@@ -25,7 +19,10 @@ namespace ShreddedWater
         internal static KeyCode CachedTauntKeyCode;
 
         // internal static List<ConfigEntry<bool>> ItemToggles; // TODO auto toggles in config
-
+        
+        private const string ConfigNameEquips = "Equips";
+        private const string ConfigNameInteractables = "Interactables";
+        
         public SWConfigLoader(BaseUnityPlugin plugin) : base(plugin)
         {
         }
@@ -33,8 +30,7 @@ namespace ShreddedWater
         public override void Init()
         {
             base.Init();
-
-            ConfigItems = CreateConfigFile(ConfigNameItems);
+            
             ConfigEquips = CreateConfigFile(ConfigNameEquips);
             ConfigInteractables = CreateConfigFile(ConfigNameInteractables);
 

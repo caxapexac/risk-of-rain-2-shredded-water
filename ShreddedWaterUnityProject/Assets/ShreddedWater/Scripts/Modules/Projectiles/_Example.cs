@@ -1,4 +1,6 @@
-﻿// using UnityEngine;
+﻿// ReSharper disable All
+
+// using UnityEngine;
 // using static R2API.DamageAPI;
 //
 // namespace Moonstorm.Starstorm2.Projectiles

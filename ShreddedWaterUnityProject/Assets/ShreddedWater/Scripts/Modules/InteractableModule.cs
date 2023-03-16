@@ -17,7 +17,7 @@ namespace ShreddedWater
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing Interactables.");
+            SS2Log.Info("Initializing Interactables.");
             GetInteractableBases();
         }
 
@@ -25,10 +25,11 @@ namespace ShreddedWater
         {
             base.GetInteractableBases()
                 .Where(interactable => SWConfigLoader.Instance.ConfigInteractables.Bind(
-                    $"{SWPlugin.Instance.Info.Metadata.Name} :: Interactables", 
-                    $"{interactable.Interactable}", // TODO check all sections naminig
-                    true, 
-                    "Enable/Disable this Interactable").Value)
+                        $"{SWPlugin.Instance.Info.Metadata.Name} :: Interactables",
+                        $"{interactable.Interactable}", // TODO check all sections naming
+                        true,
+                        "Enable/Disable this Interactable")
+                    .Value)
                 .ToList()
                 .ForEach(interactable => AddInteractable(interactable));
             return null;

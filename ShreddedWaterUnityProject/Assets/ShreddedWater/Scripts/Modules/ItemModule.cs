@@ -13,14 +13,13 @@ namespace ShreddedWater
     {
         public static ItemModule Instance { get; private set; }
 
-        public BaseUnityPlugin MainClass => SWPlugin.Instance;
         public override R2APISerializableContentPack SerializableContentPack => SWContentLoader.Instance.SerializableContentPack;
 
         public override void Initialize()
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing Items...");
+            SS2Log.Info("Initializing Items...");
             GetItemBases();
         }
 
@@ -30,20 +29,20 @@ namespace ShreddedWater
                 .ToList()
                 .ForEach(item => AddItem(item));
 
-            base.GetItemBases().ToList().ForEach(item => CheckEnabledStatus(item));
+            base.GetItemBases().ToList().ForEach(CheckEnabledStatus);
 
             return null;
         }
 
-        protected void CheckEnabledStatus(ItemBase item)
+        private void CheckEnabledStatus(ItemBase item)
         {
-            if(item.ItemDef.deprecatedTier != RoR2.ItemTier.NoTier)
+            if (item.ItemDef.deprecatedTier != RoR2.ItemTier.NoTier)
             {
                 string niceName = MSUtil.NicifyString(item.GetType().Name);
                 ConfigEntry<bool> enabled = SWConfigLoader.Instance.ConfigItems.Bind(
-                    niceName, 
-                    "Enabled", 
-                    true, 
+                    niceName,
+                    "Enabled",
+                    true,
                     "Should this item be enabled?");
 
                 if (!enabled.Value)
@@ -52,6 +51,5 @@ namespace ShreddedWater
                 }
             }
         }
-
     }
 }

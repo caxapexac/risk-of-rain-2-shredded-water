@@ -1,4 +1,6 @@
-﻿// using RoR2;
+﻿// ReSharper disable All
+
+// using RoR2;
 //
 // namespace Moonstorm.Starstorm2.Scenes
 // {

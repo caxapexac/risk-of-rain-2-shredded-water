@@ -1,4 +1,6 @@
-﻿// using Mono.Cecil.Cil;
+﻿// ReSharper disable All
+
+// using Mono.Cecil.Cil;
 // using MonoMod.Cil;
 // using R2API;
 // using RoR2;

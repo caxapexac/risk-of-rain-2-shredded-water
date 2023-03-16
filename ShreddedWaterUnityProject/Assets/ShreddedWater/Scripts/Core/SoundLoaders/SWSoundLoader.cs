@@ -1,16 +1,18 @@
 ﻿using RoR2;
 
+
 namespace ShreddedWater
 {
-    public class SWSoundLoader
+    public sealed class SWSoundLoader
     {
-        private SWPlugin _plugin;
+        private readonly SWPlugin _plugin;
 
         public SWSoundLoader(SWPlugin plugin)
         {
             _plugin = plugin;
         }
-        
+
+        // ReSharper disable once UnusedMember.Global
         public string SoundBankDirectory
         {
             get => System.IO.Path.Combine(_plugin.AssemblyDir, "soundbanks");

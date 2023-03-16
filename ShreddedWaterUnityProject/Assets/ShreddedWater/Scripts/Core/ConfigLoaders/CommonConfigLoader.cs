@@ -1,24 +1,27 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using Moonstorm.Loaders;
 
 
-namespace Moonstorm.Loaders
+namespace ShreddedWater
 {
     public abstract class CommonConfigLoader<TSelf> : ConfigLoader<TSelf> where TSelf : ConfigLoader<TSelf>
     {
-        public const string ConfigNameGeneral = "General";
-        public const string ConfigNameCharacters = "Characters";
-        
+        private const string ConfigNameGeneral = "General";
+        private const string ConfigNameCharacters = "Characters";
+        private const string ConfigNameItems = "Items";
+
         public override bool CreateSubFolder => true;
 
         public ConfigFile ConfigGeneral;
         public ConfigFile ConfigCharacters;
-        
+        public ConfigFile ConfigItems;
+
         internal ConfigEntry<bool> EntryUnlockAll;
 
         protected readonly BaseUnityPlugin Plugin;
 
-        public CommonConfigLoader(BaseUnityPlugin plugin)
+        protected CommonConfigLoader(BaseUnityPlugin plugin)
         {
             Plugin = plugin;
         }
@@ -27,6 +30,7 @@ namespace Moonstorm.Loaders
         {
             ConfigGeneral = CreateConfigFile(ConfigNameGeneral);
             ConfigCharacters = CreateConfigFile(ConfigNameCharacters);
+            ConfigItems = CreateConfigFile(ConfigNameItems);
 
             EntryUnlockAll = ConfigGeneral.Bind(
                 $"{Plugin.Info.Metadata.Name} :: Unlock All",
@@ -34,7 +38,7 @@ namespace Moonstorm.Loaders
                 false,
                 $"Setting this to true unlocks all the content in {Plugin.Info.Metadata.Name}, excluding skin unlocks.");
         }
-        
+
         // This helper automatically makes config entries for enabling/disabling survivors
         internal ConfigEntry<bool> CharacterEnableConfig(string characterName, string displayName)
         {

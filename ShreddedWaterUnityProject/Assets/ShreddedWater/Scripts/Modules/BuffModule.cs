@@ -16,9 +16,10 @@ namespace ShreddedWater
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing Buffs.");
+            SS2Log.Info("Initializing Buffs.");
             GetBuffBases();
         }
+
         protected override IEnumerable<BuffBase> GetBuffBases()
         {
             base.GetBuffBases()

@@ -1,4 +1,6 @@
-﻿// using R2API.ScriptableObjects;
+﻿// ReSharper disable All
+
+// using R2API.ScriptableObjects;
 // using RoR2;
 // using System.Collections.Generic;
 // using System.Collections.ObjectModel;

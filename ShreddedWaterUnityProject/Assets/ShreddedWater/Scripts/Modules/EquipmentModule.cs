@@ -17,7 +17,7 @@ namespace ShreddedWater
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing Equipments...");
+            SS2Log.Info("Initializing Equipments...");
             GetEquipmentBases();
             GetEliteEquipmentBases();
         }
@@ -37,11 +37,11 @@ namespace ShreddedWater
         {
             base.GetEliteEquipmentBases()
                 .ToList()
-                .ForEach(eeqp => AddEliteEquipment(eeqp));
+                .ForEach(equipment => AddEliteEquipment(equipment));
             return null;
         }
 
-        protected void CheckEnabledStatus(EquipmentBase eqp)
+        private void CheckEnabledStatus(EquipmentBase eqp)
         {
             string niceName = MSUtil.NicifyString(eqp.GetType().Name);
             if (!(eqp.EquipmentDef.dropOnDeathChance > 0 || eqp.EquipmentDef.passiveBuffDef || niceName.ToLower().Contains("affix")))

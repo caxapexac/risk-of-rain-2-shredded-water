@@ -1,6 +1,6 @@
 ﻿namespace ShreddedWater
 {
-    public class DifficultyModule
+    public abstract class DifficultyModule
     {
         public static void Init()
         {

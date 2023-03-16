@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
+using Moonstorm;
+using Moonstorm.Loaders;
 using Moonstorm.Starstorm2;
 using UnityEngine;
 
 
-namespace Moonstorm.Loaders
+namespace ShreddedWater
 {
     /// <summary>
     /// 
@@ -26,25 +27,25 @@ namespace Moonstorm.Loaders
         {
             return AssetBundles[bundle];
         }
-        
+
         protected void LoadAssetBundleFromFile(string path, TBundleEnum bundleEnum)
         {
             try
             {
                 AssetBundle bundle = AssetBundle.LoadFromFile(path);
-                if(!bundle)
+                if (!bundle)
                 {
                     throw new FileLoadException("AssetBundle.LoadFromFile did not return an asset bundle");
                 }
 
-                if(AssetBundles.ContainsKey(bundleEnum))
+                if (AssetBundles.ContainsKey(bundleEnum))
                 {
                     throw new InvalidOperationException($"AssetBundle in path loaded successfully, but the assetBundles dictionary already contains an entry for {bundleEnum}.");
                 }
 
                 AssetBundles[bundleEnum] = bundle;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 SS2Log.Error($"Could not load asset bundle at path {path} and assign to enum {bundleEnum}. {e}");
             }
@@ -52,10 +53,9 @@ namespace Moonstorm.Loaders
 
         #endregion
 
-        
+
         #region Assets
 
-                [CanBeNull]
         public TAsset LoadAsset<TAsset>(string name, TBundleEnum bundle) where TAsset : UnityEngine.Object
         {
             if (Instance == null)
@@ -69,7 +69,7 @@ namespace Moonstorm.Loaders
             {
                 SS2Log.Warning(
                     $"The  method \"{SS2Util.GetCallingMethod<CommonAssetsLoader<TSelf, TBundleEnum>>()}\" is calling \"LoadAsset<TAsset>(string, SS2Bundle)\" with the arguments \"{typeof(TAsset).Name}\", \"{name}\" and \"{bundle}\", however, the asset could not be found.\n"
-                    + $"A complete search of all the bundles will be done and the correct bundle enum will be logged.");
+                    + "A complete search of all the bundles will be done and the correct bundle enum will be logged.");
 
                 // ReSharper disable once TailRecursiveCall
                 return LoadAssetFromAnyBundle<TAsset>(name);
@@ -82,7 +82,6 @@ namespace Moonstorm.Loaders
         /// Debug only! Use when asset bundle in unknown
         /// </summary>
         /// <returns></returns>
-        [CanBeNull]
         public TAsset LoadAssetFromAnyBundle<TAsset>(string name) where TAsset : UnityEngine.Object
         {
             TAsset asset = FindAssetInAllBundles<TAsset>(name, out TBundleEnum foundInBundle);
@@ -99,7 +98,6 @@ namespace Moonstorm.Loaders
             return asset;
         }
 
-        [CanBeNull]
         public TAsset[] LoadAllAssetsByType<TAsset>(TBundleEnum bundle) where TAsset : UnityEngine.Object
         {
             if (Instance == null)
@@ -121,10 +119,8 @@ namespace Moonstorm.Loaders
         /// <summary>
         /// Debug only! Use when asset bundle in unknown
         /// </summary>
-        /// <param name="bundle"></param>
         /// <typeparam name="TAsset"></typeparam>
         /// <returns></returns>
-        [NotNull]
         public TAsset[] LoadAllAssetsByTypeFromAnyBundle<TAsset>() where TAsset : UnityEngine.Object
         {
             List<TAsset> loadedAssets = new List<TAsset>();
@@ -141,7 +137,6 @@ namespace Moonstorm.Loaders
             return loadedAssets.ToArray();
         }
 
-        [CanBeNull]
         private TAsset FindAssetInAllBundles<TAsset>(string assetName, out TBundleEnum foundInBundle) where TAsset : UnityEngine.Object
         {
             foreach ((TBundleEnum enumVal, AssetBundle assetBundle) in AssetBundles)
@@ -159,7 +154,7 @@ namespace Moonstorm.Loaders
 
         #endregion
 
-        
+
         #region Materials
 
         internal void SwapMaterialShaders()
@@ -176,6 +171,5 @@ namespace Moonstorm.Loaders
         }
 
         #endregion
-
     }
 }

@@ -1,4 +1,6 @@
-﻿// using RoR2;
+﻿// ReSharper disable All
+
+// using RoR2;
 // using RoR2.Achievements;
 //
 // namespace Moonstorm.Starstorm2.Unlocks.Executioner

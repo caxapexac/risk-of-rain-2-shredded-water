@@ -13,7 +13,7 @@ namespace ShreddedWater
     {
         private void Start()
         {
-            SS2Log.Warning($"SWDebugUtil Start");
+            SS2Log.Warning("SWDebugUtil Start");
             Run.onRunStartGlobal += OnRunStart;
             RoR2Application.onLoad += OnRoR2Load;
         }
@@ -55,7 +55,7 @@ namespace ShreddedWater
 
         private void OnRunStart(Run obj)
         {
-            SS2Log.Warning($"SWDebugUtil OnRunStart");
+            SS2Log.Warning("SWDebugUtil OnRunStart");
 
             #region Command Invoking
 
@@ -63,12 +63,12 @@ namespace ShreddedWater
             {
                 // InvokeCommand("stage1_pod", "0");
                 // InvokeCommand("no_enemies");
-                // InvokeCommand("enable_event_logging", "1");
             }
 
             #endregion
         }
 
+        // ReSharper disable once UnusedMember.Local
         private void InvokeCommand(string commandName, params string[] arguments)
         {
             DebugToolkit.DebugToolkit.InvokeCMD(NetworkUser.instancesList[0], commandName, arguments);
@@ -105,7 +105,7 @@ namespace ShreddedWater
 
             if (Input.GetKeyDown(KeyCode.Home))
             {
-                SS2Log.Warning($"Ahoy");
+                SS2Log.Warning("Ahoy");
                 Chat.SendBroadcastChat(new Chat.SimpleChatMessage { baseToken = "Ahoy" });
             }
 

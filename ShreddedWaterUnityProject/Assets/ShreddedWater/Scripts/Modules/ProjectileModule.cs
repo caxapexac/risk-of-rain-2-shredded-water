@@ -16,7 +16,7 @@ namespace ShreddedWater
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing Projectiles.");
+            SS2Log.Info("Initializing Projectiles.");
             GetProjectileBases();
         }
 

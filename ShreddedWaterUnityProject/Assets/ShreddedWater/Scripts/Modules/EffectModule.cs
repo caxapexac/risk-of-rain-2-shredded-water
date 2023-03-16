@@ -7,13 +7,13 @@ using UnityEngine;
 
 namespace ShreddedWater
 {
-    public class EffectModule
+    public abstract class EffectModule
     {
         private static R2APISerializableContentPack SerializableContentPack => SWContentLoader.Instance.SerializableContentPack;
 
         public static void Init()
         {
-            SS2Log.Info($"Populating effect prefabs");
+            SS2Log.Info("Populating effect prefabs");
             SerializableContentPack.effectPrefabs = SerializableContentPack.effectPrefabs
                 .Concat(SWAssetsLoader.Instance.LoadAllAssetsByTypeFromAnyBundle<GameObject>().Where(go => go.GetComponent<EffectComponent>()))
                 .ToArray();

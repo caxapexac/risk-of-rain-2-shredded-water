@@ -1,5 +1,6 @@
 ﻿using UnityEngine.SceneManagement;
 
+
 namespace ShreddedWater
 {
     public static class EventModule
@@ -28,7 +29,7 @@ namespace ShreddedWater
                 // {
                 //     Object.Instantiate(SS2Assets.LoadAsset<GameObject>("StormMainMenuEffect", SS2Bundle.Events), Vector3.zero, Quaternion.identity);
                 // }
-            }   
+            }
         }
     }
 }

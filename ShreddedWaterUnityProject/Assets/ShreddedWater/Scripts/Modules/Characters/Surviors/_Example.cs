@@ -1,4 +1,6 @@
-﻿// using RoR2;
+﻿// ReSharper disable All
+
+// using RoR2;
 // using System.Collections.Generic;
 // using System.Collections.ObjectModel;
 // using UnityEngine;

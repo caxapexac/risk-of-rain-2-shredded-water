@@ -1,11 +1,9 @@
-﻿using R2API;
-using R2API.ScriptableObjects;
-using RoR2;
+﻿using R2API.ScriptableObjects;
 using System.Collections.Generic;
 using System.Linq;
 using Moonstorm;
 using Moonstorm.Starstorm2;
-using UnityEngine;
+
 
 namespace ShreddedWater
 {
@@ -18,7 +16,7 @@ namespace ShreddedWater
         {
             Instance = this;
             base.Initialize();
-            SS2Log.Info($"Initializing Artifacts");
+            SS2Log.Info("Initializing Artifacts");
             GetArtifactBases();
 
             // TODO this adds another shape to cycle button on 3x3 artifact field

@@ -2,9 +2,11 @@ using BepInEx;
 using Moonstorm;
 using Moonstorm.Starstorm2;
 
+
 namespace ShreddedWater
 {
     #region R2API
+
     [BepInDependency("com.bepis.r2api.artifactcode")]
     [BepInDependency("com.bepis.r2api.colors")]
     [BepInDependency("com.bepis.r2api.commandhelper")]
@@ -29,59 +31,57 @@ namespace ShreddedWater
     [BepInDependency("com.bepis.r2api.sound")]
     [BepInDependency("com.bepis.r2api.tempvisualeffect")]
     [BepInDependency("com.bepis.r2api.unlockable")]
+
     #endregion
-    [BepInDependency("com.TeamMoonstorm.MoonstormSharedUtils", BepInDependency.DependencyFlags.HardDependency)]
+
+    [BepInDependency("com.TeamMoonstorm.MoonstormSharedUtils")]
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.RiskyLives.RiskyMod", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin(Guid, ModName, Version)]
-	public sealed class SWPlugin : CommonUnityPlugin<SWPlugin>
-	{
-		private const string Guid = "com.caxapexac.ShreddedWater";
-		private const string ModName = "Shredded Water";
-		private const string Version = "0.0.1";
+    public sealed class SWPlugin : CommonUnityPlugin<SWPlugin>
+    {
+        private const string Guid = "com.caxapexac.ShreddedWater";
+        private const string ModName = "Shredded Water";
+        private const string Version = "0.0.1";
 
-		private SWAssetsLoader _assetsLoader;
-		private SWConfigLoader _configLoader;
-		private SWContentLoader _contentLoader;
-		private SWLanguageLoader _languageLoader;
-		private SWSoundLoader _soundLoader;
-		private SWCompatibilityLoader _compatibilityLoader;
-		
-		protected override void OnAwake()
-		{
-			SS2Log.logger = Logger;
-			SS2Log.Warning("SW Awakening");
-// #if DEBUG
-			SS2Log.Warning("SW Debug");
-			gameObject.AddComponent<SWDebugUtil>();
-// #endif
-			
+        private SWAssetsLoader _assetsLoader;
+        private SWConfigLoader _configLoader;
+        private SWContentLoader _contentLoader;
+        private SWLanguageLoader _languageLoader;
+        private SWSoundLoader _soundLoader;
+        private SWCompatibilityLoader _compatibilityLoader;
+
+        protected override void OnAwake()
+        {
+            SS2Log.logger = Logger;
+            SS2Log.Info("SW Awakening");
+
 #if DEBUG
-			SS2Log.Warning("SW Actually Debug");
+            SS2Log.Warning("SW Actually Debug");
 #endif
-			_assetsLoader = new SWAssetsLoader();
-			_assetsLoader.Init();
-			_configLoader = new SWConfigLoader(this);
-			_configLoader.Init();
-			_contentLoader = new SWContentLoader();
-			_contentLoader.Init();
-			_languageLoader = new SWLanguageLoader();
-			_languageLoader.Init();
-			ConfigurableFieldManager.AddMod(this);
+            gameObject.AddComponent<SWDebugUtil>(); // TODO https://discord.com/channels/786037647263924224/850009338021019688/1086022838818975788
 
-			//N: i have no idea if SystemInitializer would be too late for this, so it stays here for now.
-			// R2API.Networking.NetworkingAPI.RegisterMessageType<ScriptableObjects.NemesisSpawnCard.SyncBaseStats>();
-			SS2Log.Warning("SW Awaken");
-		}
+            _assetsLoader = new SWAssetsLoader();
+            _assetsLoader.Init();
+            _configLoader = new SWConfigLoader(this);
+            _configLoader.Init();
+            _contentLoader = new SWContentLoader();
+            _contentLoader.Init();
+            _languageLoader = new SWLanguageLoader();
+            _languageLoader.Init();
+            ConfigurableFieldManager.AddMod(this);
 
-		protected override void OnStart()
-		{
-			SS2Log.Warning("SW Starting");
-			_soundLoader = new SWSoundLoader(this);
-			_soundLoader.Init();
-			_compatibilityLoader = new SWCompatibilityLoader();
-			_compatibilityLoader.Init();
-			SS2Log.Warning("SW Started");
-		}
-	}
+            //N: i have no idea if SystemInitializer would be too late for this, so it stays here for now.
+            // R2API.Networking.NetworkingAPI.RegisterMessageType<ScriptableObjects.NemesisSpawnCard.SyncBaseStats>();
+            SS2Log.Info("Awaken");
+        }
+
+        protected override void OnStart()
+        {
+            _soundLoader = new SWSoundLoader(this);
+            _soundLoader.Init();
+            _compatibilityLoader = new SWCompatibilityLoader();
+            _compatibilityLoader.Init();
+        }
+    }
 }

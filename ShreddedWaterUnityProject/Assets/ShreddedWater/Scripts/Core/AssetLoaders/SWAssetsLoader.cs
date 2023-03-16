@@ -1,10 +1,8 @@
-﻿using Moonstorm.Loaders;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using Moonstorm.Starstorm2;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 
 namespace ShreddedWater
@@ -13,6 +11,7 @@ namespace ShreddedWater
     {
         Invalid,
         Main,
+
         // Base,
         // Artifacts,
         // Executioner,
@@ -28,8 +27,8 @@ namespace ShreddedWater
     public sealed class SWAssetsLoader : CommonAssetsLoader<SWAssetsLoader, SWBundleEnum>
     {
         private const string AssetBundleFolderName = "assetbundles";
-
         private const string BundleMain = "swmain";
+
         // private const string BASE = "ss2base";
         // private const string ARTIFACTS = "ss2artifacts";
         // private const string EXECUTIONER = "ss2executioner";

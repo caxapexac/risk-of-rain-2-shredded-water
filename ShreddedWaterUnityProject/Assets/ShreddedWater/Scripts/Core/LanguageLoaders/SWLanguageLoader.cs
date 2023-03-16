@@ -1,10 +1,9 @@
 ﻿using Moonstorm.Loaders;
-using ShreddedWater;
 
 
 namespace ShreddedWater
 {
-    public class SWLanguageLoader : LanguageLoader<SWLanguageLoader>
+    public sealed class SWLanguageLoader : LanguageLoader<SWLanguageLoader>
     {
         public override string AssemblyDir => SWPlugin.Instance.AssemblyDir;
 
@@ -14,6 +13,7 @@ namespace ShreddedWater
         internal void Init()
         {
             LoadLanguages();
+
             // TMProEffects.Init();
         }
     }

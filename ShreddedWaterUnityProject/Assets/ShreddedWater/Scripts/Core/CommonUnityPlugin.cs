@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using BepInEx;
 
 
@@ -10,8 +9,8 @@ namespace ShreddedWater
     {
         public static T Instance { get; private set; }
 
-        public string AssemblyDir => Path.GetDirectoryName(Info.Location);
-        
+        public string AssemblyDir => Path.GetDirectoryName(Info.Location) ?? throw new DirectoryNotFoundException();
+
         private void Awake()
         {
             Instance = this as T;
@@ -24,7 +23,7 @@ namespace ShreddedWater
         {
             OnStart();
         }
-        
+
         protected abstract void OnStart();
     }
 }
