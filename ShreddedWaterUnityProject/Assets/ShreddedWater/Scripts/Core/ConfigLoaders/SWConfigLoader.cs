@@ -44,13 +44,6 @@ namespace ShreddedWater
                 true,
                 $"Enables {Plugin.Info.Metadata.Name}'s random events");
 
-
-            EntryRestKeyCode = ConfigGeneral.Bind(
-                $"{Plugin.Info.Metadata.Name} :: KeyBinds",
-                "Rest Emote",
-                KeyCode.Alpha1,
-                "KeyCode used for the Rest emote");
-
             EntryRestKeyCode = ConfigGeneral.Bind(
                 $"{Plugin.Info.Metadata.Name} :: KeyBinds",
                 "Rest Emote",

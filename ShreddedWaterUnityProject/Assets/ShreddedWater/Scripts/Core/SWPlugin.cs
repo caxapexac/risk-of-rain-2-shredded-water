@@ -50,8 +50,14 @@ namespace ShreddedWater
 		protected override void OnAwake()
 		{
 			SS2Log.logger = Logger;
-#if DEBUG
+			SS2Log.Warning("SW Awakening");
+// #if DEBUG
+			SS2Log.Warning("SW Debug");
 			gameObject.AddComponent<SWDebugUtil>();
+// #endif
+			
+#if DEBUG
+			SS2Log.Warning("SW Actually Debug");
 #endif
 			_assetsLoader = new SWAssetsLoader();
 			_assetsLoader.Init();
@@ -65,14 +71,17 @@ namespace ShreddedWater
 
 			//N: i have no idea if SystemInitializer would be too late for this, so it stays here for now.
 			// R2API.Networking.NetworkingAPI.RegisterMessageType<ScriptableObjects.NemesisSpawnCard.SyncBaseStats>();
+			SS2Log.Warning("SW Awaken");
 		}
 
 		protected override void OnStart()
 		{
+			SS2Log.Warning("SW Starting");
 			_soundLoader = new SWSoundLoader(this);
 			_soundLoader.Init();
 			_compatibilityLoader = new SWCompatibilityLoader();
 			_compatibilityLoader.Init();
+			SS2Log.Warning("SW Started");
 		}
 	}
 }

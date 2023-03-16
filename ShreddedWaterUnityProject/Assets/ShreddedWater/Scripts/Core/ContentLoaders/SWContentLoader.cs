@@ -19,6 +19,7 @@ namespace ShreddedWater
 
         public static class Items
         {
+            public static ItemDef SandCannon;
             // public static ItemDef ArmedBackpack;
             // public static ItemDef CoffeeBag;
             // public static ItemDef Cognation;
