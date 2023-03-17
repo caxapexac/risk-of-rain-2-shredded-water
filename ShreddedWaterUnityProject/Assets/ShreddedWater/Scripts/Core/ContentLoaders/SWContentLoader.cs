@@ -21,7 +21,19 @@ namespace ShreddedWater
 
         public static class Items
         {
+            // Tier 1
             public static ItemDef SandCannon;
+            
+            // Tier 2
+            
+            // Tier 3
+            public static ItemDef LivingFortress;
+            
+            // Tier Boss
+            
+            // Tier Hidden
+            
+            // Tier Lunar
         }
 
 

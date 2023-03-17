@@ -4,7 +4,7 @@ using RoR2;
 using RoR2.Items;
 
 
-namespace ShreddedWater
+namespace ShreddedWater.Items
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class SandCannon : ItemBase

@@ -58,8 +58,8 @@ namespace ShreddedWater
 
 #if DEBUG
             SS2Log.Warning("SW Actually Debug");
+            gameObject.AddComponent<SWDebugUtil>();
 #endif
-            gameObject.AddComponent<SWDebugUtil>(); // TODO https://discord.com/channels/786037647263924224/850009338021019688/1086022838818975788
 
             _assetsLoader = new SWAssetsLoader();
             _assetsLoader.Init();
