@@ -177,4 +177,6 @@ ContentModules
  Items
  Projectiles
  Unlockables checks
+
+TODO for mobs https://thunderstore.io/package/Nebby/VarianceAPI/
 */

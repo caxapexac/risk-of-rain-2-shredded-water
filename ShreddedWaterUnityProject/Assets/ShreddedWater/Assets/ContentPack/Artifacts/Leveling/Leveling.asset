@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 1032072274, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: Leveling
   m_EditorClassIdentifier: 
-  nameToken: 
-  descriptionToken: 
+  nameToken: SW_ARTIFACT_LEVELING_NAME
+  descriptionToken: SW_ARTIFACT_LEVELING_DESC
   unlockableDef: {fileID: 0}
-  requiredExpansion: {fileID: 0}
-  smallIconSelectedSprite: {fileID: 0}
-  smallIconDeselectedSprite: {fileID: 0}
+  requiredExpansion: {fileID: 11400000, guid: db0258f61db14d042ac7953e8698a5e0, type: 2}
+  smallIconSelectedSprite: {fileID: 21300000, guid: bdd8d03c8d401ac46b233b16cf0f6c1f,
+    type: 3}
+  smallIconDeselectedSprite: {fileID: 21300000, guid: 1786e1d30a6447046b69b885ea9695f6,
+    type: 3}
   pickupModelPrefab: {fileID: 0}
