@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Moonstorm;
 using Moonstorm.Components;
 using Moonstorm.Starstorm2;
@@ -11,6 +12,8 @@ namespace ShreddedWater
 {
     public sealed class SWDebugUtil : MonoBehaviour
     {
+        private List<ScriptableObject> _toSpawnDefs = new List<ScriptableObject>();
+
         private void Start()
         {
             SS2Log.Warning("SWDebugUtil Start");
@@ -76,6 +79,13 @@ namespace ShreddedWater
 
         private void Update()
         {
+            GameObject playerObject = GetPlayerObject();
+            if (playerObject == null)
+                return;
+
+            Transform playerTransform = playerObject.transform;
+            InputBankTest playerInputBank = playerObject.GetComponent<InputBankTest>();
+
             #region MaterialTester
 
             if (Input.GetKeyDown(KeyCode.Alpha0) && Run.instance)
@@ -115,23 +125,52 @@ namespace ShreddedWater
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
+                _toSpawnDefs.Add(SWContentLoader.Items.SandCannon);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                _toSpawnDefs.Add(SWContentLoader.Equipments.ItemInjector);
+            }
+
+            foreach (ScriptableObject def in _toSpawnDefs)
+            {
                 try
                 {
-                    Transform playerTransform = GetPlayerObject().transform;
-                    InputBankTest playerInputBank = GetPlayerObject().GetComponent<InputBankTest>();
+                    string name = "?";
+                    PickupIndex pickupIndex = PickupIndex.none;
 
-                    ItemDef itemDef = SWContentLoader.Items.SandCannon;
-                    PickupDropletController.CreatePickupDroplet(
-                        PickupCatalog.FindPickupIndex(itemDef.itemIndex),
-                        playerTransform.position,
-                        playerInputBank.aimDirection * 20f);
-                    SS2Log.Warning($"Spawned debug item {itemDef.nameToken}");
+                    if (def is ItemDef itemDef)
+                    {
+                        name = itemDef.nameToken;
+                        pickupIndex = PickupCatalog.FindPickupIndex(itemDef.itemIndex);
+                    }
+                    else if (def is EquipmentDef equipmentDef)
+                    {
+                        name = equipmentDef.nameToken;
+                        pickupIndex = PickupCatalog.FindPickupIndex(equipmentDef.equipmentIndex);
+                    }
+
+                    if (pickupIndex != PickupIndex.none)
+                    {
+                        PickupDropletController.CreatePickupDroplet(
+                            pickupIndex,
+                            playerTransform.position,
+                            playerInputBank.aimDirection * 20f);
+                        SS2Log.Warning($"Spawned debug item {name}");
+                    }
+                    else
+                    {
+                        SS2Log.Warning($"Cent spawn by def {def}");
+                    }
                 }
                 catch (Exception e)
                 {
                     SS2Log.Warning(e);
                 }
             }
+
+            _toSpawnDefs.Clear();
 
             #endregion
 
@@ -141,9 +180,6 @@ namespace ShreddedWater
             {
                 try
                 {
-                    Transform playerTransform = GetPlayerObject().transform;
-                    InputBankTest playerInputBank = GetPlayerObject().GetComponent<InputBankTest>();
-
                     GameObject prefab = SWAssetsLoader.Instance.LoadAsset<GameObject>("ContentPack/Items/Tier1/SandCannon/DisplaySandCannon", SWBundleEnum.Main);
                     Instantiate(prefab, playerTransform.position + playerInputBank.aimDirection * 5f, Quaternion.identity);
                 }
@@ -158,6 +194,8 @@ namespace ShreddedWater
 
         private static GameObject GetPlayerObject()
         {
+            if (PlayerCharacterMasterController.instances.Count == 0)
+                return null;
             return PlayerCharacterMasterController.instances[0].master.GetBodyObject();
         }
     }

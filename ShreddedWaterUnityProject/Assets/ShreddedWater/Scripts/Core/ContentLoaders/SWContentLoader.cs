@@ -40,6 +40,8 @@ namespace ShreddedWater
         public static class Equipments
         {
             // public static EquipmentDef _;
+
+            public static EquipmentDef ItemInjector;
         }
 
 
