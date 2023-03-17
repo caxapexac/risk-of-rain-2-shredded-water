@@ -20,4 +20,5 @@ MonoBehaviour:
     type: 3}
   smallIconDeselectedSprite: {fileID: 21300000, guid: 1786e1d30a6447046b69b885ea9695f6,
     type: 3}
-  pickupModelPrefab: {fileID: 0}
+  pickupModelPrefab: {fileID: 2380019785074037936, guid: 6ff73b7ce8855ba46bdc392403c52cf1,
+    type: 3}

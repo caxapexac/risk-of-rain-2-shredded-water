@@ -11,10 +11,7 @@ namespace ShreddedWater
     {
         Invalid,
         Main,
-
-        // Base,
         // Artifacts,
-        // Executioner,
         // Equipments,
         // Items,
         // Events,
