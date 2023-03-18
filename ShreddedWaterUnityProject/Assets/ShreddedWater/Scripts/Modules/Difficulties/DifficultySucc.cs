@@ -1,4 +1,5 @@
 ﻿using R2API;
+using R2API.ScriptableObjects;
 using RoR2;
 
 
@@ -6,7 +7,7 @@ namespace ShreddedWater
 {
     public static class DifficultySucc
     {
-        public static R2API.ScriptableObjects.SerializableDifficultyDef SuccDef { get; private set; }
+        public static SerializableDifficultyDef SuccDef { get; private set; }
 
         public static DifficultyIndex SuccIndex
         {
@@ -17,7 +18,7 @@ namespace ShreddedWater
 
         internal static void Init()
         {
-            SuccDef = SWAssetsLoader.Instance.LoadAsset<R2API.ScriptableObjects.SerializableDifficultyDef>("Succ", SWBundleEnum.Main);
+            SuccDef = SWAssetsLoader.Instance.LoadAsset<SerializableDifficultyDef>("Succ", SWBundleEnum.Main);
             DifficultyAPI.AddDifficulty(SuccDef);
             Run.onRunStartGlobal += Run_onRunStartGlobal;
             Run.onRunDestroyGlobal += Run_onRunDestroyGlobal;

@@ -39,15 +39,13 @@ namespace ShreddedWater
 
         public static class Equipments
         {
-            // public static EquipmentDef _;
-
             public static EquipmentDef ItemInjector;
         }
 
 
         public static class Buffs
         {
-            // public static BuffDef _;
+            public static BuffDef BuffLivingFortress;
         }
 
 

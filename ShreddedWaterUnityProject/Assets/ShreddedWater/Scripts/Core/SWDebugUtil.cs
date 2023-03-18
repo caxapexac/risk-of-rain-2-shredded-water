@@ -85,6 +85,7 @@ namespace ShreddedWater
 
             Transform playerTransform = playerObject.transform;
             InputBankTest playerInputBank = playerObject.GetComponent<InputBankTest>();
+            CharacterBody playerBody = playerObject.GetComponent<CharacterBody>();
 
             #region MaterialTester
 
@@ -190,6 +191,22 @@ namespace ShreddedWater
             }
 
             #endregion
+
+            #region Level
+            
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                try
+                {
+                    TeamManager.instance.GiveTeamExperience(TeamIndex.Player, 1000);
+                }
+                catch (Exception e)
+                {
+                    SS2Log.Warning(e);
+                }
+            }
+
+            #endregion
         }
 
         private static GameObject GetPlayerObject()
@@ -217,4 +234,8 @@ ContentModules
  Unlockables checks
 
 TODO for mobs https://thunderstore.io/package/Nebby/VarianceAPI/
+
+TODO N'Kuhana survivor
+  https://www.reddit.com/r/riskofrain/comments/qrsr19/nkuhana_concept/
+  https://discord.com/channels/562704639141740588/1057043048611184670/1057043048611184670
 */

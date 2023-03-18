@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: LivingFortress
   m_EditorClassIdentifier: 
-  deprecatedTier: 2
-  _itemTierDef: {fileID: 0}
+  deprecatedTier: 10
+  _itemTierDef: {fileID: 11400000, guid: b83d99a65c479ac46b50a58670301cb2, type: 2}
   nameToken: SW_ITEM_LIVINGFORTRESS_NAME
   pickupToken: SW_ITEM_LIVINGFORTRESS_PICKUP
   descriptionToken: SW_ITEM_LIVINGFORTRESS_DESC
