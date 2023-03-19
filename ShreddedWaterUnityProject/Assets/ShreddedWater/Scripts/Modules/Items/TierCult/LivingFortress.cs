@@ -23,7 +23,7 @@ namespace ShreddedWater.Items
             [ItemDefAssociation]
             private static ItemDef GetItemDef() => SWContentLoader.Items.LivingFortress;
             
-            private static BuffDef GetBuffDef() => SWContentLoader.Buffs.BuffLivingFortress;
+            private static BuffDef GetBuffDef() => SWContentLoader.Buffs.bdLivingFortress;
 
             private float _stopWatch = 0;
             private float _stopWatchInterval = 0.15f;

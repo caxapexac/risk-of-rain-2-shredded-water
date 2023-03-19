@@ -15,7 +15,7 @@ namespace ShreddedWater
 
         public static class Artifacts
         {
-            // public static ArtifactDef _;
+            public static ArtifactDef Leveling;
         }
 
 
@@ -23,17 +23,23 @@ namespace ShreddedWater
         {
             // Tier 1
             public static ItemDef SandCannon;
-            
+
             // Tier 2
-            
+
             // Tier 3
             public static ItemDef LivingFortress;
-            
+
             // Tier Boss
-            
+
             // Tier Hidden
-            
+
             // Tier Lunar
+        }
+
+
+        public static class ItemTiers
+        {
+            public static ItemTierDef ItemTierCult;
         }
 
 
@@ -45,7 +51,7 @@ namespace ShreddedWater
 
         public static class Buffs
         {
-            public static BuffDef BuffLivingFortress;
+            public static BuffDef bdLivingFortress;
         }
 
 
@@ -58,12 +64,6 @@ namespace ShreddedWater
         public static class Survivors
         {
             //public static SurvivorDef _;
-        }
-
-
-        public static class ItemTiers
-        {
-            // public static ItemTierDef _;
         }
 
 
@@ -116,11 +116,11 @@ namespace ShreddedWater
             {
                 () => PopulateTypeFields(typeof(Artifacts), ContentPack.artifactDefs),
                 () => PopulateTypeFields(typeof(Items), ContentPack.itemDefs),
+                () => PopulateTypeFields(typeof(ItemTiers), ContentPack.itemTierDefs),
                 () => PopulateTypeFields(typeof(Equipments), ContentPack.equipmentDefs),
                 () => PopulateTypeFields(typeof(Buffs), ContentPack.buffDefs),
                 () => PopulateTypeFields(typeof(Elites), ContentPack.eliteDefs),
                 () => PopulateTypeFields(typeof(Survivors), ContentPack.survivorDefs),
-                () => PopulateTypeFields(typeof(ItemTiers), ContentPack.itemTierDefs)
             };
         }
     }

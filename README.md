@@ -1,5 +1,8 @@
 # Shredded Water
 
+## How to play
+- DLC Surviors of the Void should be bought and enabled (I think should be bought on host at least) 
+
 ## Development environment setup
 
 - [Unity 2019.4.26f1](unityhub://2019.4.26f1/e0392c6b2363)

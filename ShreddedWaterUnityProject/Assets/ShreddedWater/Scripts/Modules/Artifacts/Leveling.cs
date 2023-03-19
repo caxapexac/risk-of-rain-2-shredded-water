@@ -17,7 +17,7 @@ namespace ShreddedWater.Artifacts
         public override ArtifactCode ArtifactCode { get; } = SWAssetsLoader.Instance.LoadAsset<ArtifactCode>("ArtifactCodeLeveling", SWBundleEnum.Main);
 
         private Xoroshiro128Plus _random;
-        
+
         public override void Initialize()
         {
         }
@@ -32,16 +32,18 @@ namespace ShreddedWater.Artifacts
         {
             GlobalEventManager.onCharacterLevelUp += OnCharacterLevelUp;
         }
-        
+
         private void OnCharacterLevelUp(CharacterBody characterBody)
         {
             if (!NetworkServer.active)
                 return;
 
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage { baseToken = $"{characterBody.name} Leveled to {characterBody.level}" });
+
             List<PickupIndex> pickupIndexList;
             if (characterBody.level % 10 == 0)
             {
-                pickupIndexList = new List<PickupIndex>(Run.instance.availableTier3DropList);   
+                pickupIndexList = new List<PickupIndex>(Run.instance.availableTier3DropList);
             }
             else if (characterBody.level % 3 == 0)
             {
@@ -66,19 +68,19 @@ namespace ShreddedWater.Artifacts
             }
 
             PickupIndex pickupIndex = pickupIndexList[0];
-            
+
             Chat.SendBroadcastChat(new Chat.NamedObjectChatMessage()
             {
-                namedObject = characterBody.gameObject, 
+                namedObject = characterBody.gameObject,
                 baseToken = "{0} Levels up to level {1} and gets {2}", // TODO l10n
-                paramTokens = new []
+                paramTokens = new[]
                 {
                     characterBody.level.ToString(CultureInfo.InvariantCulture),
                     ItemCatalog.GetItemDef(pickupIndex.pickupDef.itemIndex).nameToken
                 }
             });
-            
-            PickupDropletController.CreatePickupDroplet(pickupIndex, characterBody.transform.position, Vector3.up);
+
+            PickupDropletController.CreatePickupDroplet(pickupIndex, characterBody.transform.position, Vector3.up * 15.0f);
         }
     }
 }
