@@ -69,16 +69,16 @@ namespace ShreddedWater.Artifacts
 
             PickupIndex pickupIndex = pickupIndexList[0];
 
-            Chat.SendBroadcastChat(new Chat.NamedObjectChatMessage()
-            {
-                namedObject = characterBody.gameObject,
-                baseToken = "{0} Levels up to level {1} and gets {2}", // TODO l10n
-                paramTokens = new[]
-                {
-                    characterBody.level.ToString(CultureInfo.InvariantCulture),
-                    ItemCatalog.GetItemDef(pickupIndex.pickupDef.itemIndex).nameToken
-                }
-            });
+            // Chat.SendBroadcastChat(new Chat.NamedObjectChatMessage()
+            // {
+            //     namedObject = characterBody.gameObject,
+            //     baseToken = "Levels up to level {0} and gets {1}", // TODO l10n
+            //     paramTokens = new[]
+            //     {
+            //         characterBody.level.ToString(CultureInfo.InvariantCulture),
+            //         ItemCatalog.GetItemDef(pickupIndex.pickupDef.itemIndex).nameToken
+            //     }
+            // });
 
             PickupDropletController.CreatePickupDroplet(pickupIndex, characterBody.transform.position, Vector3.up * 15.0f);
         }
