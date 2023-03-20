@@ -36,6 +36,7 @@ namespace ShreddedWater.Items
                 Chat.SendBroadcastChat(new Chat.SimpleChatMessage { baseToken = $"{nameof(ItemInjector)}.{nameof(Start)}" });
                 _targetSelector = body.gameObject.AddComponent<TargetSelector>();
                 _targetSelector.TeamMask = TeamMask.GetEnemyTeams(body.teamComponent.teamIndex);
+                _targetSelector.TeamMask.a ^= TeamMask.all.a;
                 _inputBank = body.GetComponent<InputBankTest>();
             }
 
@@ -58,11 +59,41 @@ namespace ShreddedWater.Items
 
             public bool FireAction(EquipmentSlot slot)
             {
-                CharacterBody body = _targetSelector.Selected;
-                if(body == null)
+                CharacterBody target = _targetSelector.Selected;
+                if (target == null)
                     return false;
 
-                //Chat.SendBroadcastChat(new Chat.SimpleChatMessage { baseToken = $"{nameof(ItemInjector)}.{nameof(FireAction)}" });
+
+
+                Inventory inventoryTo = target.inventory;
+                Inventory inventoryFrom = body.inventory;
+
+                SS2Log.Warning($"{nameof(ItemInjector)} -> {string.Join(",", inventoryFrom)}");
+
+
+                List<ItemIndex> list = new List<ItemIndex>();
+                
+                foreach(ItemIndex itemIndex in inventoryFrom.itemAcquisitionOrder)
+                {
+                    ItemDef itemDef = ItemCatalog.GetItemDef(itemIndex);
+                    if (!itemDef.canRemove)
+                        continue;
+                    list.Add(itemIndex);
+                }
+                //inventory.itemAcquisitionOrder;
+                if (list.Count <= 0)
+                    return false;
+
+                ItemIndex selectedItemIndex = list[Random.Range(0, list.Count)];
+
+                if (inventoryFrom.GetItemCount(selectedItemIndex) <= 0) // should not be needed
+                    return false;
+
+                inventoryFrom.RemoveItem(selectedItemIndex, 1);
+                inventoryTo.GiveItem(selectedItemIndex, 1);
+
+                ItemDef selectedItemDef = ItemCatalog.GetItemDef(selectedItemIndex);
+                Chat.SendBroadcastChat(new Chat.SimpleChatMessage { baseToken = $"{nameof(ItemInjector)}.{nameof(FireAction)} transfer {selectedItemDef.name}" });
                 //SS2Log.Warning($"{nameof(ItemInjector)}.{nameof(FireAction)}");
                 return true;
             }
